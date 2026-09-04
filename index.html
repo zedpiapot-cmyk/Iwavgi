@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f8e4eb">
+<title>For You ♡</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(135deg,#fff8fa,#f6e8ef 55%,#eee5f3);color:#402b35;font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}
+button{font:inherit}#hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:30}
+.heart{position:absolute;bottom:-30px;animation:rise linear forwards;opacity:.7}@keyframes rise{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-115vh) rotate(35deg);opacity:0}}
+#opening{height:100svh;display:grid;place-items:center;padding:20px;text-align:center}.wrap{width:min(92vw,460px)}
+.envelope{position:relative;width:100%;aspect-ratio:1.45;border-radius:20px;background:#f1cad7;box-shadow:0 25px 70px #542b3a2b;cursor:pointer;overflow:visible}
+.base{position:absolute;inset:0;background:linear-gradient(135deg,#f8dce5,#eabacb);clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%);border-radius:20px;z-index:3}
+.flap{position:absolute;left:0;top:0;width:100%;height:58%;background:#e9bacb;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:1s;z-index:5;border-radius:20px 20px 0 0}
+.letter{position:absolute;left:9%;top:8%;width:82%;height:80%;background:#fffdf9;border-radius:12px;display:grid;place-items:center;padding:20px;box-shadow:0 10px 30px #00000012;transition:1s;z-index:2}
+.letter h1{font-size:40px;margin:8px 0}.letter p{margin:0;font-size:15px}
+.open .flap{transform:rotateX(180deg);z-index:1}.open .letter{transform:translateY(-48%)}
+.open-btn{margin-top:32px;border:0;border-radius:999px;padding:15px 28px;background:#402b35;color:#fff;box-shadow:0 10px 25px #402b3530;cursor:pointer}
+#story{display:none}#story.visible{display:block;animation:fade 1.2s}@keyframes fade{from{opacity:0}to{opacity:1}}
+.hero{min-height:92svh;display:grid;place-items:center;text-align:center;padding:50px 20px}.hero-inner{max-width:760px}
+.kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;opacity:.58}h2{font-size:clamp(42px,12vw,78px);line-height:.95;margin:18px 0}.hero p{font-size:18px;line-height:1.8}
+.section{max-width:850px;margin:auto;padding:45px 18px}.section-title{text-align:center;font-size:34px;margin:0 0 28px}
+.photos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.photo{aspect-ratio:1;border:2px dashed #d6a9b9;border-radius:20px;background:#fff8fa;display:grid;place-items:center;text-align:center;padding:15px;color:#956176}
+.photo img{width:100%;height:100%;object-fit:cover;border-radius:18px;display:none}
+.reasons{display:grid;gap:13px}.reason{display:flex;gap:14px;background:#ffffffd9;border:1px solid #efdde4;border-radius:18px;padding:16px;box-shadow:0 7px 20px #6b3b4d12}
+.number{width:34px;height:34px;flex:0 0 34px;border-radius:50%;background:#f2dbe4;display:grid;place-items:center;font-size:12px}.reason-text{font-size:16px;line-height:1.55;padding-top:5px}
+.music-status{position:fixed;right:15px;top:15px;z-index:25;background:#fffdf9e8;border:1px solid #ecd8e0;border-radius:999px;padding:9px 13px;font-size:12px;box-shadow:0 8px 20px #0001;display:none}
+.final{min-height:90svh;display:grid;place-items:center;text-align:center;padding:50px 20px}.final-card{max-width:680px;background:#fffdf9e8;border-radius:30px;padding:42px 25px;box-shadow:0 20px 60px #4a263522}.final-heart{font-size:52px;animation:pulse 1.5s infinite}@keyframes pulse{50%{transform:scale(1.15)}}.final h3{font-size:clamp(34px,9vw,58px);margin:12px 0}.final p{font-size:18px;line-height:1.8}
+footer{padding:30px;text-align:center;opacity:.5;font-size:12px}@media(max-width:600px){.photo{font-size:13px}.reason-text{font-size:15px}}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+
+<section id="opening">
+  <div class="wrap">
+    <div class="envelope" id="envelope">
+      <div class="letter"><div><div style="font-size:28px">♡</div><h1>For You</h1><p>A little something I made just for you.</p></div></div>
+      <div class="flap"></div><div class="base"></div>
+    </div>
+    <button class="open-btn" id="openBtn">Open Me ♡</button>
+  </div>
+</section>
+
+<main id="story">
+<section class="hero">
+  <div class="hero-inner">
+    <div class="kicker">A little love letter</div>
+    <h2>144 Reasons<br>Why I Love You</h2>
+    <p>143 already means “I love you,” but I wanted one more. So here are 144 little reasons, memories, and things about you that make me grateful I get to love you.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Our Little Gallery</h2>
+  <div class="photos">
+    <label class="photo"><input type="file" accept="image/*" hidden onchange="preview(this)"><img><div><span style="font-size:34px">📷</span><br>Tap to add a photo</div></label>
+    <label class="photo"><input type="file" accept="image/*" hidden onchange="preview(this)"><img><div><span style="font-size:34px">♡</span><br>Tap to add a memory</div></label>
+    <label class="photo"><input type="file" accept="image/*" hidden onchange="preview(this)"><img><div><span style="font-size:34px">✨</span><br>Tap to add a moment</div></label>
+    <label class="photo"><input type="file" accept="image/*" hidden onchange="preview(this)"><img><div><span style="font-size:34px">🌷</span><br>Tap to add another</div></label>
+  </div>
+</section>
+
+<section class="section">
+<h2 class="section-title">The 144 Reasons</h2>
+<div class="reasons"><article class="reason"><div class="number">1</div><div class="reason-text">The way you say my name</div></article>
+<article class="reason"><div class="number">2</div><div class="reason-text">You make even random conversations memorable</div></article>
+<article class="reason"><div class="number">3</div><div class="reason-text">Yung mga bigla mong “hehe”</div></article>
+<article class="reason"><div class="number">4</div><div class="reason-text">The way you get excited over the smallest things</div></article>
+<article class="reason"><div class="number">5</div><div class="reason-text">You somehow make time feel faster</div></article>
+<article class="reason"><div class="number">6</div><div class="reason-text">Yung cute mong boses kapag inaantok ka</div></article>
+<article class="reason"><div class="number">7</div><div class="reason-text">You make me want to tell you every random thought I have</div></article>
+<article class="reason"><div class="number">8</div><div class="reason-text">Yung reaction mo kapag inaasar kita</div></article>
+<article class="reason"><div class="number">9</div><div class="reason-text">You have a way of making places feel more special</div></article>
+<article class="reason"><div class="number">10</div><div class="reason-text">Ang saya makinig sa mga kwento mo</div></article>
+<article class="reason"><div class="number">11</div><div class="reason-text">I love how you have your own way of doing things</div></article>
+<article class="reason"><div class="number">12</div><div class="reason-text">Yung focus mo kapag may gusto kang gawin</div></article>
+<article class="reason"><div class="number">13</div><div class="reason-text">You make me look forward to checking my phone</div></article>
+<article class="reason"><div class="number">14</div><div class="reason-text">Yung random selfies na sinesend mo</div></article>
+<article class="reason"><div class="number">15</div><div class="reason-text">The way you suddenly become extra playful</div></article>
+<article class="reason"><div class="number">16</div><div class="reason-text">You make me curious about all the things you love</div></article>
+<article class="reason"><div class="number">17</div><div class="reason-text">Yung mga random “hmm” mo</div></article>
+<article class="reason"><div class="number">18</div><div class="reason-text">I love hearing about how your day went</div></article>
+<article class="reason"><div class="number">19</div><div class="reason-text">You make conversations never feel forced</div></article>
+<article class="reason"><div class="number">20</div><div class="reason-text">Ang cute mo kapag excited kang magkwento</div></article>
+<article class="reason"><div class="number">21</div><div class="reason-text">Your random facial expressions</div></article>
+<article class="reason"><div class="number">22</div><div class="reason-text">You make me want to make more memories with you</div></article>
+<article class="reason"><div class="number">23</div><div class="reason-text">Yung mga bagay na ino-overthink mo kahit ang liit lang HAHAHA</div></article>
+<article class="reason"><div class="number">24</div><div class="reason-text">Your little celebrations when something goes right</div></article>
+<article class="reason"><div class="number">25</div><div class="reason-text">You make me smile at my phone like an idiot</div></article>
+<article class="reason"><div class="number">26</div><div class="reason-text">Yung bigla-bigla mong pagpalit ng topic</div></article>
+<article class="reason"><div class="number">27</div><div class="reason-text">Your cute reactions when you’re surprised</div></article>
+<article class="reason"><div class="number">28</div><div class="reason-text">I love discovering new things about you</div></article>
+<article class="reason"><div class="number">29</div><div class="reason-text">You make waiting for something feel worth it</div></article>
+<article class="reason"><div class="number">30</div><div class="reason-text">Yung mga moments na bigla mong naaalala</div></article>
+<article class="reason"><div class="number">31</div><div class="reason-text">Your random “what if” questions</div></article>
+<article class="reason"><div class="number">32</div><div class="reason-text">You make simple conversations feel special</div></article>
+<article class="reason"><div class="number">33</div><div class="reason-text">Yung pagiging competitive mo minsan</div></article>
+<article class="reason"><div class="number">34</div><div class="reason-text">Your little laugh when something catches you off guard</div></article>
+<article class="reason"><div class="number">35</div><div class="reason-text">I love discovering new sides of you</div></article>
+<article class="reason"><div class="number">36</div><div class="reason-text">Ang cute kapag may gusto kang ipakita saakin</div></article>
+<article class="reason"><div class="number">37</div><div class="reason-text">You make me want to keep our little memories forever</div></article>
+<article class="reason"><div class="number">38</div><div class="reason-text">Your random voice messages</div></article>
+<article class="reason"><div class="number">39</div><div class="reason-text">Yung way mo magkwento na parang ang daming ganap HAHAHA</div></article>
+<article class="reason"><div class="number">40</div><div class="reason-text">You make me laugh at things I normally wouldn’t find funny</div></article>
+<article class="reason"><div class="number">41</div><div class="reason-text">Yung mga sleepy moments mo</div></article>
+<article class="reason"><div class="number">42</div><div class="reason-text">The way you sometimes act like a little kid</div></article>
+<article class="reason"><div class="number">43</div><div class="reason-text">You make me enjoy doing absolutely nothing</div></article>
+<article class="reason"><div class="number">44</div><div class="reason-text">Yung random questions mo sa pinaka-unexpected na oras</div></article>
+<article class="reason"><div class="number">45</div><div class="reason-text">I love how you can make a normal day feel different</div></article>
+<article class="reason"><div class="number">46</div><div class="reason-text">Yung mga bigla mong “uy”</div></article>
+<article class="reason"><div class="number">47</div><div class="reason-text">Ang cute ng reaction mo kapag may naaalala ako tungkol sa’yo</div></article>
+<article class="reason"><div class="number">48</div><div class="reason-text">You make me want to know everything about your day</div></article>
+<article class="reason"><div class="number">49</div><div class="reason-text">Yung random pictures na sinesend mo</div></article>
+<article class="reason"><div class="number">50</div><div class="reason-text">The way you sometimes get lost in your own thoughts</div></article>
+<article class="reason"><div class="number">51</div><div class="reason-text">I feel lucky that I get to know you this closely</div></article>
+<article class="reason"><div class="number">52</div><div class="reason-text">Yung reaction mo kapag binibigyan kita ng compliment</div></article>
+<article class="reason"><div class="number">53</div><div class="reason-text">The way you laugh at your own jokes</div></article>
+<article class="reason"><div class="number">54</div><div class="reason-text">Ang saya ng mga nonsense conversations natin</div></article>
+<article class="reason"><div class="number">55</div><div class="reason-text">Your random energy</div></article>
+<article class="reason"><div class="number">56</div><div class="reason-text">Yung excitement mo kapag may food HAHAHA</div></article>
+<article class="reason"><div class="number">57</div><div class="reason-text">I love hearing your opinions about random things</div></article>
+<article class="reason"><div class="number">58</div><div class="reason-text">Gusto kong i-save lahat ng funny conversations natin</div></article>
+<article class="reason"><div class="number">59</div><div class="reason-text">Yung mga little habits mo na unti-unti kong napansin</div></article>
+<article class="reason"><div class="number">60</div><div class="reason-text">The way you get quiet when you’re concentrating</div></article>
+<article class="reason"><div class="number">61</div><div class="reason-text">You make me excited whenever I know we’re going to talk</div></article>
+<article class="reason"><div class="number">62</div><div class="reason-text">Yung mga bigla mong “guess what”</div></article>
+<article class="reason"><div class="number">63</div><div class="reason-text">I love hearing about the things that happened during your day</div></article>
+<article class="reason"><div class="number">64</div><div class="reason-text">Ang dami mong mood sa isang conversation lang HAHAHA</div></article>
+<article class="reason"><div class="number">65</div><div class="reason-text">Yung mga cute mong misunderstandings</div></article>
+<article class="reason"><div class="number">66</div><div class="reason-text">The way you react when something doesn’t go your way</div></article>
+<article class="reason"><div class="number">67</div><div class="reason-text">You make me laugh without even trying</div></article>
+<article class="reason"><div class="number">68</div><div class="reason-text">Yung random ideas na pumapasok sa isip mo</div></article>
+<article class="reason"><div class="number">69</div><div class="reason-text">The way you get way too excited about something</div></article>
+<article class="reason"><div class="number">70</div><div class="reason-text">I love seeing you enjoy the things you care about</div></article>
+<article class="reason"><div class="number">71</div><div class="reason-text">Yung mga “wait lang” moments mo</div></article>
+<article class="reason"><div class="number">72</div><div class="reason-text">You make me curious about what you’re thinking</div></article>
+<article class="reason"><div class="number">73</div><div class="reason-text">Gusto kong mas marami pa tayong pictures together</div></article>
+<article class="reason"><div class="number">74</div><div class="reason-text">Your random jokes that come out of nowhere</div></article>
+<article class="reason"><div class="number">75</div><div class="reason-text">Yung pagiging shy mo minsan pagkatapos mong magsabi ng cute</div></article>
+<article class="reason"><div class="number">76</div><div class="reason-text">I love how every conversation with you becomes a memory</div></article>
+<article class="reason"><div class="number">77</div><div class="reason-text">Yung pagiging dramatic mo minsan HAHAHA</div></article>
+<article class="reason"><div class="number">78</div><div class="reason-text">You make me laugh when I least expect it</div></article>
+<article class="reason"><div class="number">79</div><div class="reason-text">Gusto kong mas marami pa tayong ma-experience together</div></article>
+<article class="reason"><div class="number">80</div><div class="reason-text">Your random recommendations</div></article>
+<article class="reason"><div class="number">81</div><div class="reason-text">Yung mga bagay na sinasabi mong baka magustuhan ko</div></article>
+<article class="reason"><div class="number">82</div><div class="reason-text">Your reaction when you finally understand something</div></article>
+<article class="reason"><div class="number">83</div><div class="reason-text">Yung mga bigla mong “hala”</div></article>
+<article class="reason"><div class="number">84</div><div class="reason-text">You make me appreciate small moments more</div></article>
+<article class="reason"><div class="number">85</div><div class="reason-text">Ang saya makita kang masaya kapag may nakuha kang gusto mo</div></article>
+<article class="reason"><div class="number">86</div><div class="reason-text">Your random compliments</div></article>
+<article class="reason"><div class="number">87</div><div class="reason-text">Yung way mo magkwento kapag sobrang interested ka sa topic</div></article>
+<article class="reason"><div class="number">88</div><div class="reason-text">I love seeing what genuinely makes you happy</div></article>
+<article class="reason"><div class="number">89</div><div class="reason-text">Your little routines</div></article>
+<article class="reason"><div class="number">90</div><div class="reason-text">The way you make me feel like our conversations could go on forever</div></article>
+<article class="reason"><div class="number">91</div><div class="reason-text">Gusto kong tandaan kahit yung maliliit na bagay tungkol sa’yo</div></article>
+<article class="reason"><div class="number">92</div><div class="reason-text">Your random late-night thoughts</div></article>
+<article class="reason"><div class="number">93</div><div class="reason-text">Yung mga sinasabi mong sobrang unexpected</div></article>
+<article class="reason"><div class="number">94</div><div class="reason-text">I love how you have your own little world of interests</div></article>
+<article class="reason"><div class="number">95</div><div class="reason-text">Gusto kong maging part ng mundo na ‘yon</div></article>
+<article class="reason"><div class="number">96</div><div class="reason-text">Your cute reactions when I catch you doing something funny</div></article>
+<article class="reason"><div class="number">97</div><div class="reason-text">You make me forget about the time</div></article>
+<article class="reason"><div class="number">98</div><div class="reason-text">Yung mga moments na confident ka</div></article>
+<article class="reason"><div class="number">99</div><div class="reason-text">The way you get excited when you accomplish something</div></article>
+<article class="reason"><div class="number">100</div><div class="reason-text">Ang saya makita kang proud sa sarili mo</div></article>
+<article class="reason"><div class="number">101</div><div class="reason-text">Yung random “look at this” messages mo</div></article>
+<article class="reason"><div class="number">102</div><div class="reason-text">You can make me laugh kahit text lang</div></article>
+<article class="reason"><div class="number">103</div><div class="reason-text">You make ordinary pictures feel meaningful</div></article>
+<article class="reason"><div class="number">104</div><div class="reason-text">Yung expression mo kapag nalilito ka</div></article>
+<article class="reason"><div class="number">105</div><div class="reason-text">The way you sometimes get super serious over tiny things</div></article>
+<article class="reason"><div class="number">106</div><div class="reason-text">I love how unpredictable our conversations can be</div></article>
+<article class="reason"><div class="number">107</div><div class="reason-text">Yung random energy boost mo</div></article>
+<article class="reason"><div class="number">108</div><div class="reason-text">You make me want to collect memories with you</div></article>
+<article class="reason"><div class="number">109</div><div class="reason-text">Yung mga bagay na bigla mong nadidiscover tapos ikukwento mo saakin</div></article>
+<article class="reason"><div class="number">110</div><div class="reason-text">Your little celebrations</div></article>
+<article class="reason"><div class="number">111</div><div class="reason-text">Ang cute kapag excited kang magkwento nang tuloy-tuloy</div></article>
+<article class="reason"><div class="number">112</div><div class="reason-text">You make me feel included in your everyday life</div></article>
+<article class="reason"><div class="number">113</div><div class="reason-text">Yung “remember this?” moments natin</div></article>
+<article class="reason"><div class="number">114</div><div class="reason-text">I could listen to some of your stories more than once</div></article>
+<article class="reason"><div class="number">115</div><div class="reason-text">Yung mga moments na nahihiya ka sa sarili mong ginawa</div></article>
+<article class="reason"><div class="number">116</div><div class="reason-text">Your cute reactions when I surprise you</div></article>
+<article class="reason"><div class="number">117</div><div class="reason-text">Ang saya na kaya nating mag-usap ng seryoso tapos biglang puro kalokohan</div></article>
+<article class="reason"><div class="number">118</div><div class="reason-text">The way you can make me laugh with just one look</div></article>
+<article class="reason"><div class="number">119</div><div class="reason-text">Yung random sounds mo HAHAHA</div></article>
+<article class="reason"><div class="number">120</div><div class="reason-text">I love the time we spend together</div></article>
+<article class="reason"><div class="number">121</div><div class="reason-text">Ang saya kapag masaya ka dahil nagustuhan ko yung ginawa mo</div></article>
+<article class="reason"><div class="number">122</div><div class="reason-text">Your curiosity</div></article>
+<article class="reason"><div class="number">123</div><div class="reason-text">I love how you always have something to say</div></article>
+<article class="reason"><div class="number">124</div><div class="reason-text">Yung excitement mo na kahit hindi mo sabihin, halata agad</div></article>
+<article class="reason"><div class="number">125</div><div class="reason-text">The way you sometimes make a tiny thing feel like a huge event</div></article>
+<article class="reason"><div class="number">126</div><div class="reason-text">Gusto kong malaman kung ano yung tumatakbo sa isip mo</div></article>
+<article class="reason"><div class="number">127</div><div class="reason-text">Yung mga random stories mo from years ago</div></article>
+<article class="reason"><div class="number">128</div><div class="reason-text">The way you remember things I completely forgot</div></article>
+<article class="reason"><div class="number">129</div><div class="reason-text">Ang dami na nating memories kahit marami pa tayong gagawin</div></article>
+<article class="reason"><div class="number">130</div><div class="reason-text">You make me excited for the memories we haven’t made yet</div></article>
+<article class="reason"><div class="number">131</div><div class="reason-text">Yung mga “okay fine” mo</div></article>
+<article class="reason"><div class="number">132</div><div class="reason-text">The way you try to act serious pero minsan hindi mo mapigilan HAHAHA</div></article>
+<article class="reason"><div class="number">133</div><div class="reason-text">I love hearing you talk about the things you’re passionate about</div></article>
+<article class="reason"><div class="number">134</div><div class="reason-text">Gusto pa kitang makilala nang makilala</div></article>
+<article class="reason"><div class="number">135</div><div class="reason-text">Yung random moments na sweet ka</div></article>
+<article class="reason"><div class="number">136</div><div class="reason-text">You make me feel happier after talking to you</div></article>
+<article class="reason"><div class="number">137</div><div class="reason-text">Ang sarap sa feeling na alam kong nandiyan ka</div></article>
+<article class="reason"><div class="number">138</div><div class="reason-text">Your little ways of making conversations feel personal</div></article>
+<article class="reason"><div class="number">139</div><div class="reason-text">Yung kaya mong pasayahin ako kahit simpleng bagay lang</div></article>
+<article class="reason"><div class="number">140</div><div class="reason-text">I love even our completely nonsense conversations</div></article>
+<article class="reason"><div class="number">141</div><div class="reason-text">You make me want to appreciate every moment we have</div></article>
+<article class="reason"><div class="number">142</div><div class="reason-text">I love every memory that has you in it</div></article>
+<article class="reason"><div class="number">143</div><div class="reason-text">I love that somehow, out of everyone, I got to meet you</div></article>
+<article class="reason"><div class="number">144</div><div class="reason-text">And kahit 144 reasons pa ‘to, hindi pa rin enough para ilagay lahat ng dahilan kung bakit kita mahal.</div></article></div>
+</section>
+
+<section class="final">
+<div class="final-card">
+<div class="final-heart">♡</div>
+<div class="kicker">You made it to the end</div>
+<h3>But I'm not done loving you.</h3>
+<p>144 reasons still can't fit everything I feel for you. Every day gives me another reason to love you, laugh with you, make memories with you, and choose you again.</p>
+<p><strong>My 145th reason:</strong><br>I love you simply because you are you. ♡</p>
+<p style="font-size:25px">I love you for ∞ reasons.</p>
+</div>
+</section>
+<footer>Made with love, just for you ♡</footer>
+</main>
+
+<div class="music-status" id="musicStatus">♫ Playing our songs</div>
+
+<!--
+GITHUB PAGES MUSIC:
+Put these two files in the same repository folder as index.html:
+  your-universe.mp3
+  bawat-daan.mp3
+They are intentionally not included because the songs are copyrighted.
+The browser will start the first track after the user taps "Open Me", then play Bawat Daan.
+-->
+<audio id="song1" preload="auto"><source src="your-universe.mp3" type="audio/mpeg"></audio>
+<audio id="song2" preload="auto"><source src="bawat-daan.mp3" type="audio/mpeg"></audio>
+
+<script>
+const envelope=document.getElementById('envelope'), btn=document.getElementById('openBtn'), story=document.getElementById('story');
+const s1=document.getElementById('song1'), s2=document.getElementById('song2'), status=document.getElementById('musicStatus');
+
+async function openLetter(){
+  envelope.classList.add('open'); btn.textContent='Opening... ♡';
+  // This user click is the browser-approved gesture needed for audio playback.
+  try{ s1.volume=.72; await s1.play(); status.style.display='block'; }catch(e){ status.textContent='♫ Add the song files to enable music'; status.style.display='block'; }
+  s1.addEventListener('ended',()=>{ s2.volume=.72; s2.play().catch(()=>{}); },{once:true});
+  setTimeout(()=>{document.getElementById('opening').style.display='none';story.classList.add('visible');window.scrollTo(0,0)},900);
+}
+btn.addEventListener('click',openLetter); envelope.addEventListener('click',openLetter);
+
+function preview(input){
+ const box=input.parentElement,img=box.querySelector('img'),placeholder=box.querySelector('div');
+ if(input.files&&input.files[0]){img.src=URL.createObjectURL(input.files[0]);img.style.display='block';placeholder.style.display='none';}
+}
+
+function heart(){
+ const h=document.createElement('div');h.className='heart';h.textContent=['♡','♥','❤','✦'][Math.floor(Math.random()*4)];
+ h.style.left=Math.random()*100+'vw';h.style.fontSize=(14+Math.random()*20)+'px';h.style.animationDuration=(6+Math.random()*5)+'s';
+ document.getElementById('hearts').appendChild(h);setTimeout(()=>h.remove(),11000);
+}
+setInterval(heart,650);for(let i=0;i<10;i++)setTimeout(heart,i*180);
+</script>
+</body>
+</html>
