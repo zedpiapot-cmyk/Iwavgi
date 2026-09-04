@@ -233,9 +233,13 @@ Put these two files in the same repository folder as index.html:
 They are intentionally not included because the songs are copyrighted.
 The browser will start the first track after the user taps "Open Me", then play Bawat Daan.
 -->
-<audio id="song1" preload="auto"><source src="your-universe.mp3" type="audio/mpeg"></audio>
-<audio id="song2" preload="auto"><source src="bawat-daan.mp3" type="audio/mpeg"></audio>
+<<audio id="song1" preload="auto">
+  <source src="your-universe.mp3.mp3" type="audio/mpeg">
+</audio>
 
+<audio id="song2" preload="auto">
+  <source src="bawat-daan.mp3.mp3" type="audio/mpeg">
+</audio>
 <script>
 const envelope=document.getElementById('envelope'), btn=document.getElementById('openBtn'), story=document.getElementById('story');
 const s1=document.getElementById('song1'), s2=document.getElementById('song2'), status=document.getElementById('musicStatus');
